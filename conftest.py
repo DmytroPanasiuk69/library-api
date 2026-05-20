@@ -1,12 +1,13 @@
+import os
 import pytest
 from app import create_app
 
 TEST_DB_CONFIG = {
-    "host": "127.0.0.1",
-    "dbname": "library_test_db",
-    "user": "postgres",
-    "password": "secret",
-    "port": "5434"
+    "host": os.environ.get("POSTGRES_HOST", "localhost"),
+    "dbname": os.environ.get("POSTGRES_DB", "library_test_db"),
+    "user": os.environ.get("POSTGRES_USER", "postgres"),
+    "password": os.environ.get("POSTGRES_PASSWORD", "secret"),
+    "port": os.environ.get("POSTGRES_PORT", "5434")
 }
 
 
